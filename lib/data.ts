@@ -1,5 +1,11 @@
 import type { LucideIcon } from "lucide-react";
 
+export type CaseStudy = {
+  problem: string;
+  built: string;
+  result: string;
+};
+
 export type Project = {
   name: string;
   category: string;
@@ -7,6 +13,7 @@ export type Project = {
   tags: string[];
   github?: string;
   demo?: string;
+  caseStudy?: CaseStudy;
 };
 
 export const projects: Project[] = [
@@ -17,6 +24,15 @@ export const projects: Project[] = [
       "A private photo gallery with Clerk authentication, protected routes, batch Cloudinary uploads, pagination, infinite scrolling, signature-verified webhooks, and transactional PostgreSQL writes via Prisma.",
     tags: ["React", "TypeScript", "Express", "PostgreSQL", "Prisma", "Cloudinary"],
     github: "https://github.com/pandey-prince/Pixora",
+    demo: "https://pixora-photogallery.vercel.app",
+    caseStudy: {
+      problem:
+        "People want a private place for personal photos — not a public feed. Most gallery apps either expose your media or make bulk uploading and browsing large libraries painfully slow.",
+      built:
+        "A private, account-scoped gallery: Clerk handles authentication and protected routes, batch uploads go straight to Cloudinary, and signature-verified webhooks keep PostgreSQL in sync through transactional Prisma writes. Pagination and infinite scrolling keep large libraries fast.",
+      result:
+        "A production-deployed app where every photo is private to its owner, uploads are reliable even in batches, and browsing stays smooth at scale — the same auth + media + database pattern most client products need.",
+    },
   },
   {
     name: "JobVista",
@@ -25,6 +41,32 @@ export const projects: Project[] = [
       "A job platform with separate student and recruiter workflows, JWT authentication, role-protected APIs, live external job feeds, and a Gemini-powered \"JobMate\" AI assistant.",
     tags: ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "JWT"],
     github: "https://github.com/pandey-prince/JobVista",
+    demo: "https://job-vista-eta.vercel.app",
+    caseStudy: {
+      problem:
+        "Job boards serve two very different users — candidates and recruiters — and most side-project clones ignore that, mixing everyone into one flow with no real access control.",
+      built:
+        "A two-sided platform with separate student and recruiter workflows: JWT authentication, role-protected APIs, company and job management for recruiters, applications for students, live external job feeds, and a Gemini-powered \"JobMate\" assistant for candidates.",
+      result:
+        "A complete multi-role product — the auth, dashboards, and role-based access pattern that maps directly onto marketplaces, admin panels, and any app with more than one type of user.",
+    },
+  },
+  {
+    name: "Trimly",
+    category: "Full-stack · Analytics",
+    description:
+      "A URL shortener with link management and click analytics built on Next.js and Prisma over a PostgreSQL database.",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
+    github: "https://github.com/pandey-prince/trimly",
+    demo: "https://trimly-4kw9.vercel.app",
+    caseStudy: {
+      problem:
+        "Sharing long links is ugly, and free shorteners give you no ownership of your links or visibility into who is clicking them.",
+      built:
+        "A URL shortener on Next.js and PostgreSQL via Prisma: instant short links, a management dashboard, and per-link click analytics so every redirect is tracked and owned by its creator.",
+      result:
+        "A fast, deployed tool with real usage analytics — proof of shipping data-driven features end to end, from schema design to dashboard UI.",
+    },
   },
   {
     name: "LumoAI",
@@ -33,6 +75,7 @@ export const projects: Project[] = [
       "A ChatGPT-style assistant powered by Google Gemini 2.5 Flash with persistent multi-turn chat threads stored in MongoDB, served through a clean Node.js and Express REST API.",
     tags: ["React", "Node.js", "Express", "Google Gemini", "MongoDB"],
     github: "https://github.com/pandey-prince/LumoAI",
+    demo: "https://lumo-ai-xi.vercel.app",
   },
   {
     name: "Private Chat",
@@ -40,15 +83,8 @@ export const projects: Project[] = [
     description:
       "Real-time, private chat rooms with anonymous identities and self-destructing messages using Upstash Redis and Upstash Realtime, with room capacity limits and instant delivery.",
     tags: ["Next.js", "TypeScript", "Upstash Redis", "Upstash Realtime"],
-    github: "https://github.com/pandey-prince",
-  },
-  {
-    name: "Trimly",
-    category: "Full-stack · Analytics",
-    description:
-      "A URL shortener with link management and click analytics built on Next.js and Prisma over a PostgreSQL database.",
-    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
-    github: "https://github.com/pandey-prince",
+    github: "https://github.com/pandey-prince/realtime_chat",
+    demo: "https://secure-safechat.vercel.app",
   },
 ];
 

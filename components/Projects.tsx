@@ -21,29 +21,73 @@ export default function Projects() {
                 <p className="font-mono text-xs text-accent-2">{p.category}</p>
                 <h3 className="mt-1 text-xl font-semibold">{p.name}</h3>
               </div>
-              {p.github && (
-                <a
-                  href={p.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Open ${p.name} on GitHub`}
-                  className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-line text-muted transition-colors group-hover:text-accent"
-                >
-                  <ArrowUpRight size={16} />
-                </a>
-              )}
+              <div className="flex shrink-0 items-center gap-2">
+                {p.github && (
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${p.name} on GitHub`}
+                    className="grid h-9 w-9 place-items-center rounded-lg border border-line text-muted transition-colors group-hover:text-accent"
+                  >
+                    <FaGithub size={15} />
+                  </a>
+                )}
+                {p.demo && (
+                  <a
+                    href={p.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${p.name} live demo`}
+                    className="grid h-9 w-9 place-items-center rounded-lg border border-line text-muted transition-colors group-hover:text-accent"
+                  >
+                    <ArrowUpRight size={16} />
+                  </a>
+                )}
+              </div>
             </div>
             <p className="flex-1 text-sm text-muted">{p.description}</p>
-            <ul className="mt-4 flex flex-wrap gap-2">
+            {p.caseStudy && (
+              <details className="mt-4 rounded-xl border border-line bg-bg/40 open:pb-4">
+                <summary className="cursor-pointer select-none px-4 py-3 font-mono text-xs text-accent-2 transition-colors hover:text-accent">
+                  Case study
+                </summary>
+                <div className="space-y-3 px-4 text-sm text-muted">
+                  <p>
+                    <span className="font-semibold text-text">The problem. </span>
+                    {p.caseStudy.problem}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-text">What I built. </span>
+                    {p.caseStudy.built}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-text">The result. </span>
+                    {p.caseStudy.result}
+                  </p>
+                </div>
+              </details>
+            )}
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              {p.demo && (
+                <a
+                  href={p.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 rounded-md border border-accent/40 px-2 py-1 font-mono text-[11px] text-accent transition-colors hover:border-accent"
+                >
+                  Live demo <ArrowUpRight size={11} />
+                </a>
+              )}
               {p.tags.map((t) => (
-                <li
+                <span
                   key={t}
                   className="rounded-md border border-line px-2 py-1 font-mono text-[11px] text-muted"
                 >
                   {t}
-                </li>
+                </span>
               ))}
-            </ul>
+            </div>
           </Reveal>
         ))}
       </div>
