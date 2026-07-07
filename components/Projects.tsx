@@ -8,7 +8,7 @@ export default function Projects() {
   return (
     <section id="projects" className="mx-auto w-[min(1120px,calc(100%-48px))] py-20">
       <SectionHeading index="04" title="Featured projects" />
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid items-start gap-4 md:grid-cols-2">
         {projects.map((p, i) => (
           <Reveal
             as="article"
@@ -46,7 +46,7 @@ export default function Projects() {
                 )}
               </div>
             </div>
-            <p className="flex-1 text-sm text-muted">{p.description}</p>
+            <p className="text-sm text-muted">{p.description}</p>
             {p.caseStudy && (
               <details className="mt-4 rounded-xl border border-line bg-bg/40 open:pb-4">
                 <summary className="cursor-pointer select-none px-4 py-3 font-mono text-xs text-accent-2 transition-colors hover:text-accent">
