@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUpRight, ArrowDownRight, Mail } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { siteConfig } from "@/lib/config";
 
 export default function Hero() {
@@ -73,6 +73,9 @@ export default function Hero() {
           </a>
           <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-text">
             <FaLinkedin size={20} />
+          </a>
+          <a href={siteConfig.social.x} target="_blank" rel="noreferrer" aria-label="X (Twitter)" className="transition-colors hover:text-text">
+            <FaXTwitter size={20} />
           </a>
           <a href={siteConfig.social.email} aria-label="Email" className="transition-colors hover:text-text">
             <Mail size={20} />
