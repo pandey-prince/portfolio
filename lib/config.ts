@@ -16,17 +16,16 @@ export const siteConfig = {
 
   social: {
     github: "https://github.com/pandey-prince",
-    linkedin: "https://linkedin.com/in/prince-pandey-686863224/",
+    linkedin: "https://www.linkedin.com/in/prince-pandey123/",
+    x: "https://x.com/dev___guy",
     email: "mailto:work.princepandey@gmail.com",
   },
 
   // Handles used for live stat cards / contribution graph.
   handles: {
     github: "pandey-prince",
-    // TODO: replace with your real LeetCode handle.
-    leetcode: "pandey-prince",
-    // TODO: replace with your real Codeforces handle.
-    codeforces: "pandey-prince",
+    leetcode: "pandey___prince20",
+    codeforces: "dev___guy",
   },
 };
 
