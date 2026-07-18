@@ -108,6 +108,7 @@ html.dark-mode .topnav.scrolled{border-color:rgba(255,255,255,.08)}
   justify-content: space-between;
   align-items: center;
   padding: 0 60px;
+  gap: 16px;
 }
 .tnav-logo { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--ink); }
 .tnav-links{display:flex;gap:24px;list-style:none;align-items:center}
