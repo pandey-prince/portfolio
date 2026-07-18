@@ -13,7 +13,8 @@ export const siteConfig = {
   locationShort: "Lucknow, UP",
   email: "work.princepandey@gmail.com",
   phone: "",
-  resumeUrl: "/Prince_Pandey_Resume.pdf",
+  resumeUrl:
+    "https://drive.google.com/file/d/1QP1Ig4rJXvnr-N04jOLfPLGQ6ckHoEfj/view?usp=sharing",
   education: "B.Tech CSE · Goel Institute · CGPA 7.3/10",
   gradYear: "2026",
 
