@@ -1,22 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
   className?: string;
-  delay?: number;
+  delayClass?: "d1" | "d2" | "d3" | "d4" | "d5" | "";
   as?: "div" | "article" | "section" | "li";
+  onReveal?: () => void;
 };
 
 export default function Reveal({
   children,
   className = "",
-  delay = 0,
+  delayClass = "",
   as = "div",
+  onReveal,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -25,24 +26,24 @@ export default function Reveal({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisible(true);
+            el.classList.add("in");
+            onReveal?.();
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.1 },
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [onReveal]);
 
   const Tag = as as "div";
 
   return (
     <Tag
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={`r ${delayClass} ${className}`.trim()}
     >
       {children}
     </Tag>

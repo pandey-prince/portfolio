@@ -1,42 +1,100 @@
-import Reveal from "./Reveal";
-import SectionHeading from "./SectionHeading";
+"use client";
 
-const facts = [
-  { value: "220+", label: "DSA problems solved" },
-  { value: "5+", label: "Full-stack projects" },
-  { value: "2026", label: "B.Tech CSE graduate" },
-];
+import { useCallback, useRef } from "react";
+import Reveal from "./Reveal";
+import { aboutChips, aboutStats } from "@/lib/data";
+import { siteConfig } from "@/lib/config";
+
+function startCount(el: HTMLElement) {
+  if (el.dataset.done === "1") return;
+  el.dataset.done = "1";
+  const to = Number(el.dataset.to || 0);
+  const suffix = el.dataset.suffix || "";
+  const dur = 900;
+  const start = performance.now();
+  const tick = (now: number) => {
+    const p = Math.min((now - start) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    el.textContent = `${Math.round(e * to)}${suffix}`;
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
 
 export default function About() {
+  const countersRef = useRef<HTMLDivElement>(null);
+
+  const onReveal = useCallback(() => {
+    countersRef.current
+      ?.querySelectorAll<HTMLElement>(".counter")
+      .forEach(startCount);
+  }, []);
+
   return (
-    <section id="about" className="mx-auto w-[min(1120px,calc(100%-48px))] py-20">
-      <SectionHeading index="01" title="About" />
-      <div className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
+    <section id="about">
+      <div className="container">
         <Reveal>
-          <p className="text-xl leading-relaxed sm:text-2xl">
-            I&apos;m a full-stack developer and Computer Science graduate focused on
-            turning ideas into clean, maintainable web experiences.
-          </p>
-          <p className="mt-5 text-muted">
-            My work spans responsive React interfaces, REST APIs, authentication,
-            role-based access, cloud media workflows, and relational and document
-            databases. I care about practical engineering: clear architecture,
-            thoughtful UX, and products that solve a real problem — whether I&apos;m
-            shipping for a team or a freelance client.
-          </p>
+          <div className="sec-eye">About</div>
         </Reveal>
-        <div className="grid grid-cols-3 gap-3 md:grid-cols-1">
-          {facts.map((f, i) => (
-            <Reveal
-              as="article"
-              key={f.label}
-              delay={i * 80}
-              className="rounded-xl border border-line bg-surface p-4"
-            >
-              <strong className="block text-2xl text-accent">{f.value}</strong>
-              <span className="text-xs text-muted sm:text-sm">{f.label}</span>
+        <div className="about-grid">
+          <div>
+            <Reveal delayClass="d1">
+              <h2 className="about-h">
+                Building things <em>that ship.</em>
+              </h2>
             </Reveal>
-          ))}
+            <Reveal delayClass="d2">
+              <p className="about-p">
+                Hey, I&apos;m <strong>{siteConfig.shortName}</strong> — a
+                full-stack developer and Computer Science student from{" "}
+                {siteConfig.location}. I turn ideas into clean, maintainable web
+                products end to end.
+              </p>
+            </Reveal>
+            <Reveal delayClass="d3">
+              <p className="about-p">
+                My work spans responsive React interfaces, REST APIs,
+                authentication, role-based access, cloud media workflows, and
+                relational/document databases. I care about practical
+                engineering: clear architecture, thoughtful UX, and products that
+                solve a real problem.
+              </p>
+            </Reveal>
+            <Reveal delayClass="d4">
+              <p className="about-p">
+                Currently finishing <strong>B.Tech CSE (2026)</strong> at Goel
+                Institute of Technology and Management — open to full-time roles
+                and freelance projects.
+              </p>
+            </Reveal>
+            <Reveal delayClass="d5">
+              <div className="chips">
+                {aboutChips.map((c) => (
+                  <span key={c} className="chip">
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delayClass="d2" onReveal={onReveal}>
+            <div className="stats" ref={countersRef}>
+              {aboutStats.map((s) => (
+                <div className="st" key={s.label}>
+                  <div className="st-n">
+                    <span
+                      className="counter"
+                      data-to={s.to}
+                      data-suffix={s.suffix || ""}
+                    >
+                      0
+                    </span>
+                  </div>
+                  <div className="st-l">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
