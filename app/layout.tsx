@@ -1,17 +1,28 @@
+import type { CSSProperties } from "react";
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Instrument_Serif, DM_Sans, DM_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
-const inter = Inter({
+const serif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
+const sans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-mono-code",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const mono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -42,18 +53,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#080b12",
+  themeColor: "#fdfaf0",
 };
 
 const themeScript = `
 (function() {
   try {
-    var t = localStorage.getItem('prince-portfolio-theme');
-    if (t !== 'light' && t !== 'dark') { t = 'dark'; }
-    document.documentElement.setAttribute('data-theme', t);
-  } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
+    if (localStorage.getItem('prince-portfolio-dark') === 'true') {
+      document.documentElement.classList.add('dark-mode');
+      document.documentElement.dataset.darkPending = '1';
+    }
+  } catch (e) {}
 })();
 `;
 
@@ -61,14 +71,44 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${serif.variable} ${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${inter.variable} ${mono.variable} antialiased`}>
+      <body
+        className={sans.className}
+        style={
+          {
+            "--serif": "var(--font-serif), Georgia, serif",
+            "--mono": "var(--font-mono), monospace",
+            "--sans": "var(--font-sans), sans-serif",
+          } as CSSProperties
+        }
+        suppressHydrationWarning
+      >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(document.documentElement.dataset.darkPending==='1'){document.body.classList.add('dark-mode');}`,
+          }}
+        />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-black"
+          className="sr-only"
+          style={{
+            position: "absolute",
+            width: 1,
+            height: 1,
+            padding: 0,
+            margin: -1,
+            overflow: "hidden",
+            clip: "rect(0,0,0,0)",
+            whiteSpace: "nowrap",
+            border: 0,
+          }}
         >
           Skip to content
         </a>

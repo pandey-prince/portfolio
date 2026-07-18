@@ -6,9 +6,9 @@ import Reveal from "./Reveal";
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-lg border border-line bg-surface-2 px-3 py-2 text-center">
-      <div className="text-lg font-semibold text-text">{value}</div>
-      <div className="text-[11px] uppercase tracking-wide text-muted">{label}</div>
+    <div className="dsa-stat">
+      <strong>{value}</strong>
+      <span>{label}</span>
     </div>
   );
 }
@@ -21,88 +21,73 @@ export function DsaProfiles({
   codeforces: CodeforcesStats;
 }) {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      <Reveal className="rounded-2xl border border-line bg-surface p-5 sm:p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <SiLeetcode className="text-[#ffa116]" size={20} />
-            <h3 className="font-medium">LeetCode</h3>
+    <div className="dsa-grid">
+      <Reveal className="dsa-card">
+        <div className="dsa-head">
+          <div className="dsa-title">
+            <SiLeetcode color="#ffa116" size={18} />
+            LeetCode
           </div>
           <a
-            href={`https://leetcode.com/u/${siteConfig.handles.leetcode}/`}
+            href={siteConfig.social.leetcode}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-xs text-accent hover:underline"
+            className="dsa-link"
           >
             @{siteConfig.handles.leetcode}
           </a>
         </div>
         {leetcode.ok ? (
           <>
-            <div className="mb-4 flex items-baseline gap-2">
-              <span className="text-4xl font-semibold text-accent">{leetcode.totalSolved}</span>
-              <span className="text-sm text-muted">problems solved</span>
-            </div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="dsa-big">{leetcode.totalSolved}</div>
+            <div className="dsa-sub">problems solved</div>
+            <div className="dsa-stats">
               <Stat value={String(leetcode.easy)} label="Easy" />
               <Stat value={String(leetcode.medium)} label="Medium" />
               <Stat value={String(leetcode.hard)} label="Hard" />
             </div>
             {leetcode.ranking ? (
-              <p className="mt-3 text-xs text-muted">
+              <p className="dsa-sub" style={{ marginTop: 12, marginBottom: 0 }}>
                 Global ranking · #{leetcode.ranking.toLocaleString()}
               </p>
             ) : null}
           </>
         ) : (
-          <p className="text-sm text-muted">
-            Live stats unavailable. Visit the profile directly to view solved problems.
-          </p>
+          <p className="dsa-sub">Live stats unavailable — visit the profile.</p>
         )}
       </Reveal>
 
-      <Reveal delay={80} className="rounded-2xl border border-line bg-surface p-5 sm:p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <SiCodeforces className="text-[#1f8acb]" size={20} />
-            <h3 className="font-medium">Codeforces</h3>
+      <Reveal delayClass="d1" className="dsa-card">
+        <div className="dsa-head">
+          <div className="dsa-title">
+            <SiCodeforces color="#1f8acb" size={18} />
+            Codeforces
           </div>
           <a
-            href={`https://codeforces.com/profile/${siteConfig.handles.codeforces}`}
+            href={siteConfig.social.codeforces}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-xs text-accent hover:underline"
+            className="dsa-link"
           >
             @{siteConfig.handles.codeforces}
           </a>
         </div>
         {codeforces.ok ? (
           <>
-            <div className="mb-4 flex items-baseline gap-2">
-              <span className="text-4xl font-semibold text-accent">
-                {codeforces.rating ?? "—"}
-              </span>
-              <span className="text-sm capitalize text-muted">
-                {codeforces.rank ?? "unrated"}
-              </span>
+            <div className="dsa-big">{codeforces.rating ?? "—"}</div>
+            <div className="dsa-sub" style={{ textTransform: "capitalize" }}>
+              {codeforces.rank ?? "unrated"}
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="dsa-stats" style={{ gridTemplateColumns: "1fr 1fr" }}>
               <Stat value={String(codeforces.maxRating ?? "—")} label="Max rating" />
               <Stat
                 value={codeforces.solved != null ? String(codeforces.solved) : "—"}
                 label="Problems"
               />
             </div>
-            {codeforces.maxRank ? (
-              <p className="mt-3 text-xs capitalize text-muted">
-                Best rank · {codeforces.maxRank}
-              </p>
-            ) : null}
           </>
         ) : (
-          <p className="text-sm text-muted">
-            Live stats unavailable. Visit the profile directly to view rating and rank.
-          </p>
+          <p className="dsa-sub">Live stats unavailable — visit the profile.</p>
         )}
       </Reveal>
     </div>
