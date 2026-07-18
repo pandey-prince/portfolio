@@ -22,7 +22,7 @@ export const projects: Project[] = [
       "A job aggregation platform with JWT cookie auth, email OTP, Google Sign-In, scraping pipelines across 100+ company career pages, and a Gemini-powered JobMate AI assistant for resume/job match scoring.",
     tags: ["React", "Redux", "Node.js", "Express", "MongoDB", "Docker", "Gemini AI"],
     github: "https://github.com/pandey-prince/JobVista",
-    demo: "https://job-vista-eta.vercel.app",
+    demo: "https://joblelo.online",
     caseStudy: {
       problem:
         "Job boards serve two very different users — candidates and recruiters — and most side-project clones ignore that, mixing everyone into one flow with no real access control or live listings.",
@@ -39,7 +39,7 @@ export const projects: Project[] = [
       "A private encrypted photo gallery with Clerk authentication, browser-side AES-256-GCM encryption, Argon2id key derivation, Cloudinary uploads, and transactional PostgreSQL writes via Prisma.",
     tags: ["React", "TypeScript", "Bun", "Express", "PostgreSQL", "Prisma", "Clerk", "Cloudinary"],
     github: "https://github.com/pandey-prince/Pixora",
-    demo: "https://pixora-photogallery.vercel.app",
+    demo: "https://pixora-gallery.online",
     caseStudy: {
       problem:
         "People want a private place for personal photos — not a public feed. Most gallery apps either expose your media or make bulk uploading and browsing large libraries painfully slow.",
@@ -68,13 +68,13 @@ export const projects: Project[] = [
     demo: "https://trimly-4kw9.vercel.app",
   },
   {
-    name: "LumoAI",
-    category: "Full-stack · AI assistant",
+    name: "Blog App",
+    category: "Full-stack · Content",
     description:
-      "A ChatGPT-style assistant powered by Google Gemini 2.5 Flash with persistent multi-turn chat threads stored in MongoDB, served through a clean Node.js and Express REST API.",
-    tags: ["React", "Node.js", "Express", "Google Gemini", "MongoDB"],
-    github: "https://github.com/pandey-prince/LumoAI",
-    demo: "https://lumo-ai-xi.vercel.app",
+      "A full-stack blogging platform with JWT auth, create/edit/publish workflows, drafts, categories and tags, comments, profiles, and search — React TypeScript frontend with a Node.js/Express REST API.",
+    tags: ["React", "TypeScript", "Node.js", "Express", "JWT"],
+    github: "https://github.com/pandey-prince/blogging-website",
+    demo: "https://blogging-website-ten-lime.vercel.app",
   },
 ];
 
