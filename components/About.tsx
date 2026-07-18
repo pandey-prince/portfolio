@@ -82,13 +82,20 @@ export default function About() {
               {aboutStats.map((s) => (
                 <div className="st" key={s.label}>
                   <div className="st-n">
-                    <span
-                      className="counter"
-                      data-to={s.to}
-                      data-suffix={s.suffix || ""}
-                    >
-                      0
-                    </span>
+                    {s.static ? (
+                      <span>
+                        {s.to}
+                        {s.suffix || ""}
+                      </span>
+                    ) : (
+                      <span
+                        className="counter"
+                        data-to={s.to}
+                        data-suffix={s.suffix || ""}
+                      >
+                        0
+                      </span>
+                    )}
                   </div>
                   <div className="st-l">{s.label}</div>
                 </div>

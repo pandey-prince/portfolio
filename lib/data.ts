@@ -194,13 +194,15 @@ export type Stat = {
   to: number;
   suffix?: string;
   label: string;
+  /** Skip count-up for values that look wrong animating from 0 (e.g. years). */
+  static?: boolean;
 };
 
 export const aboutStats: Stat[] = [
   { to: 5, suffix: "+", label: "Projects Shipped" },
   { to: 375, suffix: "+", label: "DSA Problems" },
   { to: 1, label: "Internships" },
-  { to: 2026, label: "Grad Year" },
+  { to: 2026, label: "Grad Year", static: true },
 ];
 
 export const aboutChips = [
