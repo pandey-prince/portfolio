@@ -123,20 +123,6 @@ export default function Contact() {
                   </div>
                 </a>
                 <a
-                  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                  className="conn-link"
-                >
-                  <div className="conn-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M6.6 10.8a15.05 15.05 0 006.6 6.6l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.59.57a1 1 0 011 1V20a1 1 0 01-1 1C10.85 21 3 13.15 3 3a1 1 0 011-1h3.5a1 1 0 011 1c0 1.26.2 2.47.57 3.59a1 1 0 01-.25 1.01L6.6 10.8z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="conn-label">Phone</div>
-                    <div className="conn-val">{siteConfig.phone}</div>
-                  </div>
-                </a>
-                <a
                   href={siteConfig.social.x}
                   target="_blank"
                   rel="noreferrer"
