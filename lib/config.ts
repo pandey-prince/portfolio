@@ -17,8 +17,8 @@ export const siteConfig = {
   education: "B.Tech CSE · Goel Institute · CGPA 7.3/10",
   gradYear: "2026",
 
-  // Booking link for freelance clients — replace with your Calendly/Cal.com link.
-  bookingUrl: "mailto:work.princepandey@gmail.com?subject=Project%20inquiry",
+  // Cal.com booking for roles, freelance, and intro calls.
+  bookingUrl: "https://cal.com/dev-guy",
 
   social: {
     github: "https://github.com/pandey-prince",

@@ -64,6 +64,15 @@ export default function TopNav() {
                 </svg>
               </a>
               <a
+                href={siteConfig.bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                title="Book a call"
+                className="tnav-email"
+              >
+                Book
+              </a>
+              <a
                 href={siteConfig.resumeUrl}
                 target="_blank"
                 rel="noreferrer"

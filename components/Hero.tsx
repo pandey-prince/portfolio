@@ -55,6 +55,14 @@ export default function Hero() {
                 <div className="fill" />
                 <span>View Projects →</span>
               </a>
+              <a
+                href={siteConfig.bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost"
+              >
+                Book a Call
+              </a>
               <a href="#connect" className="btn-ghost">
                 Get in Touch
               </a>

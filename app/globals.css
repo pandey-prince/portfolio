@@ -698,6 +698,18 @@ section:first-child{padding-top:calc(var(--nav) + 32px)}
 .conn-label{font-family:var(--mono);font-size:10px;color:#5a5448;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px}
 .conn-val{font-size:13px;color:#9a8e80}
 
+.book-cta{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:var(--paper);color:var(--ink);
+  border-radius:4px;padding:16px 18px;margin-bottom:18px;
+  font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.3px;
+  transition:transform .18s,background .2s;
+}
+.book-cta:hover{transform:translateY(-2px);background:var(--paper2)}
+.book-cta-meta{font-size:11px;color:var(--sand2);font-weight:400}
+.fb-inline{color:#d98050;text-decoration:underline;text-underline-offset:3px}
+.fb-inline:hover{color:var(--paper)}
+
 .fb-title{font-family:var(--serif);font-size:26px;color:var(--paper);line-height:1.1;margin-bottom:7px}
 .fb-title em{font-style:italic;color:#d98050}
 .fb-sub{font-size:14px;color:#6a6058;font-weight:300;margin-bottom:24px}

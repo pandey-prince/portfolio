@@ -67,12 +67,39 @@ export default function Contact() {
             </Reveal>
             <Reveal delayClass="d2">
               <p className="connect-sub">
-                Have a role or freelance project in mind, or just want to say hi?
-                I&apos;m always up for a conversation.
+                Have a role or freelance project in mind? Book a call on Cal.com,
+                or drop a message — I&apos;m always up for a conversation.
               </p>
             </Reveal>
             <Reveal delayClass="d3">
+              <a
+                href={siteConfig.bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="book-cta"
+              >
+                <span>Book a meeting</span>
+                <span className="book-cta-meta">cal.com/dev-guy →</span>
+              </a>
+            </Reveal>
+            <Reveal delayClass="d3">
               <div className="conn-links">
+                <a
+                  href={siteConfig.bookingUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="conn-link"
+                >
+                  <div className="conn-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="conn-label">Schedule</div>
+                    <div className="conn-val">cal.com/dev-guy</div>
+                  </div>
+                </a>
                 <a
                   href={siteConfig.social.github}
                   target="_blank"
@@ -146,9 +173,20 @@ export default function Contact() {
             <div className="fb-title">
               Drop a thought,
               <br />
-              <em>start a conversation.</em>
+              <em>or book a call.</em>
             </div>
-            <p className="fb-sub">I read every message. No templates, no bots.</p>
+            <p className="fb-sub">
+              Prefer async? Send a note. Want to talk live?{" "}
+              <a
+                href={siteConfig.bookingUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="fb-inline"
+              >
+                Schedule on Cal.com
+              </a>
+              .
+            </p>
             <form className="fb-form" onSubmit={onSubmit}>
               <input
                 className="fb-inp"
